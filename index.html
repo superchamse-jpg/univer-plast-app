@@ -468,7 +468,7 @@ function keep(){var p=$('q').selectionStart;render();var e=$('q');e.focus();e.se
 function checkout(pr){
  if(!cart.length)return;
  if(saleMode==='order'){saveOrd();return}
- for(var ci=0;ci<cart.length;ci++){var cl=cart[ci];if(cl.id){var cp=S.products.filter(function(x){return x.id===cl.id})[0];if(cp&&(+cp.truck||0)<cl.q*(cl.m||1)/pu(cp)){toast('مخزون الشاحنة غير كافٍ للمنتج: '+cl.n+' — حمّل الكمية أولاً أو سجّلها كطلبية');return}}}
+ for(var ci=0;ci<cart.length;ci++){var cl=cart[ci];if(cl.id){var cp=S.products.filter(function(x){return x.id===cl.id})[0];if(cp&&(+cp.truck||0)<cl.q*(cl.m||1)/pu(cp)){toast('مخزون الشاحنة غير كافٍ للمنتج: '+cl.n+' — حمّل الكمية أولاً أو سجّلها كطلبيةية');return}}}
  var D=dtv(),t=Math.round(D.t*100)/100,cu=cid===''?null:S.customers[cid],pd=paid===''?t:Math.max(0,parseFloat(paid)||0);if(!cu)pd=Math.min(pd,t);
  if(pd<t&&!cu){alert('اختر زبوناً لتسجيل المبلغ المتبقي كدين');return}
  if(cu)cu.debt=Math.max(0,Math.round(((cu.debt||0)+t-pd)*100)/100);
@@ -1041,7 +1041,9 @@ function shareWhatsApp(inv) {
   window.open(url, '_blank');
 }
 
-applyOpt();render();bkRemind();
+applyOpt();
+render();
+bkRemind();
 if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0)navigator.serviceWorker.register('sw.js').catch(function(){});
 </script>
 </body>
