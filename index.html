@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>التاجر المتنقل</title>
+<title>UNIVER PLAST - الموزع الميداني</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#4b4a85">
 <meta name="mobile-web-app-capable" content="yes">
@@ -303,6 +303,23 @@ function dt(x){return new Date(x).toLocaleString('ar-DZ-u-nu-latn')}
 function uid(){return Date.now()+Math.random()}
 window.alert=function(m){toast(m)};
 function toast(m){var t=document.createElement('div');t.className='toast';t.textContent=m;document.body.appendChild(t);setTimeout(function(){if(t.parentNode)t.parentNode.removeChild(t)},4000)}
+
+// صوت التنبيه القصير (Beep) عند زيادة الكمية
+function playBeep() {
+  try {
+    var ctx = new (window.AudioContext || window.webkitAudioContext)();
+    var osc = ctx.createOscillator();
+    var gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(700, ctx.currentTime);
+    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.08);
+  } catch(e) {}
+}
+
 function askF(title,F,cb,ok){
  var o=document.createElement('div');o.className='ov';
  o.innerHTML='<div class="dg"><b>'+esc(title)+'</b>'+F.map(function(x,i){return '<div class="mut">'+esc(x[0])+'</div><input id="af'+i+'" value="'+esc(x[1]==null?'':x[1])+'">'}).join('')+'<button class="p" style="width:100%;margin:8px 0" id="afo">'+(ok||'حفظ')+'</button><button style="width:100%" id="afc">إلغاء</button></div>';
@@ -374,12 +391,28 @@ function n2(x){return (Math.round(x*100)/100).toFixed(2)}
 var gm='',dm=1;
 function tp(p){return gm==='g'?(p.pg||p.p):gm==='s'?(p.psg||p.p):p.p}
 function setG(k){gm=gm===k?'':k;render()}
+
+// عند النقر المباشر على المنتج: زيادة الكمية بمقدار علبة واحدة وإصدار صوت تنبيه
+function quickAddProduct(i){
+ var p=S.products[i];
+ if(!p)return;
+ var pr=tp(p), m=dm? (p.bx||1) : 1;
+ var l=cart.filter(function(x){return x.id===p.id&&x.m===m&&x.p===pr})[0];
+ if(l){
+   l.q += 1;
+ } else {
+   cart.push({id:p.id, n:p.n, p:pr, c:p.c||0, q:1, m:m, u:1});
+ }
+ playBeep();
+ render();
+}
+
 function openP(i){var p=S.products[i];dlg={t:'p',i:i,box:(p.bx&&dm)?1:0};render()}
 function saleV(){
  var ql=q.toLowerCase(),list=S.products.filter(function(p){return !ql||(p.n+' '+(p.k||'')).toLowerCase().indexOf(ql)>-1});
  var h='<div class="sl"><div class="card"><b>نوع العملية</b><div class="row" style="margin-top:8px"><button class="'+(saleMode==='direct'?'p':'')+'" onclick="setSaleMode(\'direct\')">بيع مباشر من الشاحنة</button><button class="'+(saleMode==='order'?'p':'')+'" onclick="setSaleMode(\'order\')">طلبية للتجهيز لاحقاً</button></div><small class="mut">'+(saleMode==='direct'?'يُخصم من مخزون الشاحنة عند تأكيد البيع.':'تُحفظ الطلبية ولا يُخصم المخزون حتى التسليم.')+'</small></div><div class="tp"><div class="tl"><div class="tt1">المبلغ الإجمالي</div><div class="tb">'+n2(total())+'</div></div><div class="tg"><label class="sw"><span>P.Super.Gros</span><input type="checkbox"'+(gm==='s'?' checked':'')+' onchange="setG(\'s\')"></label><label class="sw"><span>Prix.Gros</span><input type="checkbox"'+(gm==='g'?' checked':'')+' onchange="setG(\'g\')"></label></div></div>';
  h+='<div class="ib"><input id="q" placeholder="🔍 بحث بالاسم أو الكود" value="'+esc(q)+'" oninput="q=this.value;keep()"><button class="ic" onclick="dr()">⚙</button><button class="ic" onclick="go(\'hist\')">☰</button><button class="ic" onclick="dlg={t:\'f\'};render()">＋</button><button class="ic" onclick="go(\'home\')">⌂</button></div>';
- h+='<div class="pl">'+(list.map(function(p){var i=S.products.indexOf(p);return '<div class="pw" onclick="openP('+i+')"><span class="a">'+esc(p.n)+'</span><span class="b">'+n2(tp(p))+'</span><span class="c">'+(saleMode==='direct'?('بالشاحنة: '+(+p.truck||0)):(p.bx?'['+p.bx+']':''))+'</span></div>'}).join('')||'<p class="mut" style="padding:10px;direction:rtl">لا توجد منتجات. أضفها من المخزن.</p>')+'</div>';
+ h+='<div class="pl">'+(list.map(function(p){var i=S.products.indexOf(p);return '<div class="pw" onclick="quickAddProduct('+i+')" title="اضغط للزيادة السريعة"><span class="a">'+esc(p.n)+'</span><span class="b">'+n2(tp(p))+'</span><span class="c">'+(saleMode==='direct'?('بالشاحنة: '+(+p.truck||0)):(p.bx?'['+p.bx+']':''))+'</span></div>'}).join('')||'<p class="mut" style="padding:10px;direction:rtl">لا توجد منتجات. أضفها من المخزن.</p>')+'</div>';
  h+='<div class="ch"><span>اسم المنتج</span><span>سعر المنتج</span><button class="hb" onclick="dm=dm?0:1;render()">'+(dm?'📦':'①')+'</button><span>الكمية</span></div>';
  h+='<div class="cc">'+cart.map(function(l,i){return '<div class="cd" onclick="dlg={t:\'c\',i:'+i+'};render()"><b>'+esc(l.n)+'</b><span class="pt">'+n2(l.p)+'</span><span class="qy">'+l.q+' x [<i>'+(l.m||1)+'</i>]</span></div>'}).join('')+'</div>';
  h+='<div class="ft"><div class="cn">عدد المنتجات : '+cart.length+'</div><label class="cu">👤<select onchange="cid=this.value;ptSet();render()"><option value="">اسم الزبون</option>'+S.customers.map(function(c,i){return '<option value="'+i+'"'+(String(i)===cid?' selected':'')+'>'+esc(c.n)+'</option>'}).join('')+'</select></label><button class="ok2" onclick="if(cart.length){dlg={t:\'k\'};render()}">تأكيد</button></div></div>';
@@ -592,7 +625,7 @@ function gpsSave(){
  if(gpsFrom==='d'){cdr=null;rgs.hist={m:'today'};hq='';go('hist')}else go('cform');
 }
 function gpsV(){
- var c=ce>=0?S.customers[ce]:null,sv=(cdr&&cdr.gps)||(c&&c.gps)||'',p=gpsPos,dest=sv||(p?p.lat+','+p.lng:'');
+ var c=ce>=0?S.customers[ce]:null,sv=(cdr&&cdr.gps)||(c&&c.gps)||\'\',p=gpsPos,dest=sv||(p?p.lat+','+p.lng:'');
  var h='<div class="gp"><button class="gback" onclick="go(\'cform\')">→ رجوع</button><div class="gm"><svg viewBox="0 0 300 190" width="100%"><rect width="300" height="190" fill="#f3efe6"/><path d="M0 150 C80 130 120 120 190 100 S270 60 300 40" stroke="#8fa8c8" stroke-width="7" fill="none"/><path d="M60 190 L130 110 M170 190 L220 90 M20 60 L150 40" stroke="#c9d3e0" stroke-width="3" fill="none"/>'+(p?'<circle cx="150" cy="95" r="34" fill="#4b4a85" opacity=".15"/>':'')+'<path d="M150 112 C138 92 132 84 132 74 a18 18 0 1 1 36 0 c0 10 -6 18 -18 38z" fill="#e8912d"/><circle cx="150" cy="74" r="7" fill="#7a4a12"/></svg></div>';
  h+='<div class="gc">'+(p?'<b>📍 '+p.lat+' , '+p.lng+'</b>'+(p.acc?'<div class="mut">الدقة ± '+p.acc+' م</div>':''):'<div>'+esc(gpsMsg||'لم يتم تحديد موقع بعد')+'</div>')+(sv?'<div class="mut">الموقع المحفوظ: '+esc(sv)+'</div>':'')+'</div>';
  h+='<button class="gsv"'+(p?'':' disabled')+' onclick="gpsSave()">📍 حفظ هذا الموقع</button><button class="gsv w" onclick="gpsStart()">🔄 إعادة تحديد موقعي</button>';
@@ -738,7 +771,7 @@ function odV(){
  return '<div class="ov"><div class="dg"><b>'+esc(o.cn||'STANDARD')+'</b><div class="mut">'+ld(o.d)+'</div>'+o.items.map(function(l){return '<div class="st"><span>'+esc(l.n)+' ('+l.q+' x ['+(l.m||1)+'])</span><b>'+n2(lt(l))+'</b></div>'}).join('')+'<div class="mut">الحالة: '+esc(orderStatus(o.status))+'</div><div class="row"><button onclick="orderSetStatus('+i+',\'pending\')">انتظار</button><button onclick="orderSetStatus('+i+',\'prepared\')">تجهيز</button><button class="p" onclick="orderSetStatus('+i+',\'delivered\')">تسليم</button></div><button class="p" style="width:100%;margin:10px 0 8px" onclick="loadOrd('+i+')">تحويل إلى بيع</button><button class="d" style="width:100%;margin-bottom:8px" onclick="delOrd('+i+')">حذف الطلبية</button><button style="width:100%" onclick="dlg=null;render()">رجوع للخلف</button></div></div>';
 }
 function saveOrd(){
- if(!cart.length)return;var cu=cid===''?null:S.customers[cid];
+ var cu=cid===''?null:S.customers[cid];
  (S.orders=S.orders||[]).unshift({d:new Date().toISOString(),ci:cu?cu.id:null,cn:cu?cu.n:'',items:cart.slice(),dp:parseFloat(disc)||0,vp:parseFloat(tva)||0,status:'pending',updated:new Date().toISOString()});
  save();clr();render();toast('تم حفظ الطلبية');
 }
@@ -849,7 +882,6 @@ function pnAdd(){
  psu=$('pnsu').value;pc.push({id:p.id,n:p.n,q:q,c:c,u:pu(p)});render();
 }
 function pnSave(){
- if(!pc.length){toast('أضف منتجاً أولاً');return}
  var su=psu===''?null:S.suppliers[psu],t=Math.round(ptot()*100)/100,pd=ppd===''?t:Math.max(0,parseFloat(ppd)||0);
  if(!su)pd=Math.min(pd,t);
  if(pd<t&&!su){toast('اختر مورداً لتسجيل المتبقي كدين');return}
@@ -980,7 +1012,7 @@ function printInv(x,ret){
  setTimeout(function(){window.print()},100);
 }
 
-// ميزة إرسال الفاتورة عبر WhatsApp
+// ميزة إرسال الفاتورة عبر WhatsApp مع تنسيق رقم الهاتف الجزائري 213 تلقائياً
 function shareWhatsApp(inv) {
   var x = inv || S.invoices[iv];
   if (!x) return;
