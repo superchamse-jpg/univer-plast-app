@@ -86,8 +86,7 @@ tr:last-child td{border-bottom:0}
 .receipt .r-total{font-size:13px;font-weight:bold}
 .copy-label{background:#e8eee9;text-align:center;font-weight:bold;padding:6px;margin:-14px -14px 12px}
 .receipt-meta{font-size:11px;line-height:1.8}
-.mobile-bottom{display:none}
-@media(max-width:900px){
+.mobile-bottom{display:none}.    @media(max-width:900px){
 .layout{grid-template-columns:1fr;padding:12px}
 .side{position:static;display:flex;overflow:auto;gap:3px;padding:7px}
 .nav{min-width:max-content;width:auto;margin:0;padding:10px}
@@ -117,7 +116,7 @@ tr:last-child td{border-bottom:0}
 }
 @media print{
 body{background:#fff}
-.top,.side,.page-head,.stats,.no-print,.foot,.layout>.side{display:none!important}
+.top,.side,.page-head,.stats,.no-print,.foot{display:none!important}
 .layout{display:block;padding:0}
 .panel{border:0;box-shadow:none;padding:0}
 .main{width:100%}
@@ -129,12 +128,95 @@ body{background:#fff}
 .modal{width:100%;max-height:none;overflow:visible;padding:0}
 .modal-head{display:none}
 }
-</style>
-</head>
+.module-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,5vw,34px);padding:8px 0 24px}
+.module-tile{min-width:0;min-height:150px;border:1px solid #ffffffb8;border-radius:19px;background:rgba(255,255,255,.94);box-shadow:0 9px 22px #2b718018;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:13px 8px;color:#52615d;transition:transform .16s,box-shadow .16s}
+.module-tile:active{transform:scale(.98)}
+.module-tile:hover{box-shadow:0 12px 26px #2b71802b}
+.module-art{height:84px;width:100%;display:grid;place-items:center;font-size:52px;line-height:1}
+.module-tile strong{font-size:17px;font-weight:650;color:#64706b}
+.module-tile small{font-size:11px;color:#8b9690}
+#page-dashboard{background:linear-gradient(145deg,#c8f8dc 0%,#b5e6ef 50%,#9fc0fa 100%);border-radius:22px;padding:18px;overflow:hidden}
+#page-dashboard .page-head{padding:3px 2px 12px}
+#page-dashboard .page-head h2{color:#163f37}
+#page-dashboard .page-head p{color:#3c6a60}
+#page-dashboard .stats{margin-top:2px}
+.launcher-heading{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:0 2px 12px;color:#24554a}
+.launcher-heading strong{font-size:15px}
+.launcher-heading span{font-size:11px}
+.top{min-height:100px}
+.brand .logo{border-radius:17px}
+@media(max-width:560px){
+#page-dashboard{padding:13px;border-radius:18px}
+.module-grid{gap:clamp(16px,7vw,28px);padding:5px 0 20px}
+.module-tile{min-height:140px;border-radius:17px;padding:10px 6px;gap:5px}
+.module-art{height:78px;font-size:45px}
+.module-tile strong{font-size:15px}
+.module-tile small{font-size:10px}
+#page-dashboard .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+#page-pos{margin:-2px;background:#fafafa;min-height:calc(100vh - 130px);padding:0 0 108px;position:relative}
+.pos-top{display:grid;grid-template-columns:1fr 170px;gap:12px;align-items:center;background:#f0f3f2;padding:12px 14px 16px}
+.pos-total-title{text-align:center;font-size:21px;font-weight:850;margin-bottom:8px}
+.pos-total-value{background:#4b4a83;color:#fff;text-align:center;font-size:clamp(36px,9vw,62px);font-weight:900;letter-spacing:1px;padding:8px;border-radius:0}
+.pos-price-modes{display:flex;flex-direction:column;gap:18px;font-size:14px}
+.pos-switch{display:flex;align-items:center;justify-content:space-between;gap:7px;white-space:nowrap}
+.pos-switch input{appearance:none;width:42px;height:24px;border-radius:20px;background:#c8ccca;position:relative;flex:none;margin:0;cursor:pointer}
+.pos-switch input:checked{background:#4b4a83}
+.pos-switch input:before{content:"";position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 4px #0003;transition:.15s}
+.pos-switch input:checked:before{left:20px}
+.pos-tools{display:flex;align-items:center;gap:10px;padding:9px 12px;background:#fff;border-bottom:1px solid #eee}
+.pos-search{flex:1;min-width:0;position:relative}
+.pos-search input{border:0;background:transparent;border-radius:0;padding:10px 35px 10px 6px;font-size:17px}
+.pos-search:before{content:"⌕";position:absolute;right:8px;top:0;font-size:30px;color:#666;line-height:1}
+.pos-tool-btn{width:48px;height:48px;border-radius:50%;background:#f7f7fa;color:#4b4a83;font-size:24px;display:grid;place-items:center;padding:0;flex:none}
+.pos-tool-btn.barcode{border-radius:8px;font-size:25px}
+.pos-product-list{display:flex;flex-direction:column;gap:3px;padding:0 2px}
+.pos-product-row{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(72px,.55fr) minmax(80px,.8fr);gap:8px;align-items:center;text-align:right;border-radius:0;background:#f7e8e2;color:#182f3d;padding:14px 16px;min-height:67px;font-weight:800}
+.pos-product-row:active{background:#f0d8ce}
+.pos-product-row .pos-name{font-size:clamp(12px,3.2vw,17px);overflow-wrap:anywhere}
+.pos-product-row .pos-price,.pos-product-row .pos-stock{font-size:clamp(12px,3.3vw,17px);text-align:center;white-space:nowrap}
+.pos-list-head{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(72px,.55fr) minmax(80px,.8fr);gap:8px;background:#4b4a83;color:#fff;padding:13px 16px;font-weight:800}
+.pos-cart{background:#fff;border-top:1px solid #e8e8e8;margin-top:10px;padding:10px 10px 6px}
+.pos-cart-head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.pos-cart-head h3{margin:0;font-size:16px}
+.pos-cart-head .count{background:#4b4a83;color:#fff;padding:4px 8px;font-size:12px}
+.pos-cart-line{display:grid;grid-template-columns:minmax(0,1fr) 78px 95px 34px;gap:6px;align-items:center;border-bottom:1px solid #eee;padding:8px 0;font-size:12px}
+.pos-cart-line input{padding:7px 4px;text-align:center}
+.pos-cart-line .pos-remove{padding:7px 0;background:#ffeded;color:#b42318}
+.pos-cart-empty{text-align:center;color:#8a8a8a;padding:15px;font-size:13px}
+.pos-bottom{position:fixed;z-index:15;bottom:0;left:0;right:0;display:grid;grid-template-columns:1fr 1.5fr;background:#fff;box-shadow:0 -4px 18px #00000012;padding:8px max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));gap:8px}
+.pos-customer{display:flex;flex-direction:column;justify-content:center;gap:4px;min-width:0}
+.pos-customer label{margin:0;font-size:11px;color:#777}
+.pos-customer select{border:0;color:#334e9b;background:#fff;padding:8px 2px;font-size:14px;min-width:0}
+.pos-confirm{background:#4b4a83;color:white;border-radius:0;font-size:18px;min-height:62px}
+.pos-confirm:disabled{opacity:.45}
+.pos-hide{display:none!important}
+@media(min-width:800px){
+#page-pos{max-width:1100px;margin:0 auto;border-radius:18px;overflow:hidden;padding-bottom:20px;min-height:0}
+.pos-bottom{position:static;box-shadow:none;border-top:1px solid #eee;padding:10px}
+.pos-product-row:hover{background:#f2dcd4}
+}
+@media(max-width:480px){
+.pos-top{grid-template-columns:1fr 132px;gap:8px;padding:10px 8px 13px}
+.pos-total-title{font-size:18px}
+.pos-price-modes{font-size:12px;gap:15px}
+.pos-product-row,.pos-list-head{padding:13px 9px;gap:4px;grid-template-columns:minmax(0,1.4fr) 68px 82px}
+.pos-cart-line{grid-template-columns:minmax(0,1fr) 62px 78px 30px}
+.pos-tools{gap:6px;padding:7px}
+.pos-tool-btn{width:41px;height:41px}
+}
+</style> </head>
 <body>
 <div class="app">
+
 <header class="top">
-  <div class="brand"><div class="logo">UP</div><div><h1>UNIVER PLAST</h1><p>نظام تسيير المبيعات والموزعين والمخزون</p></div></div>
+  <div class="brand">
+    <div class="logo">UP</div>
+    <div>
+      <h1>UNIVER PLAST</h1>
+      <p>نظام تسيير المبيعات والموزعين والمخزون</p>
+    </div>
+  </div>
   <div class="top-actions">
     <button class="btn-light" onclick="exportData()">⬇ تصدير نسخة احتياطية</button>
     <button class="btn-light" onclick="document.getElementById('importFile').click()">⬆ استرجاع نسخة</button>
@@ -142,15 +224,521 @@ body{background:#fff}
     <button class="btn-lime" onclick="openSale()">＋ فاتورة جديدة</button>
   </div>
 </header>
+
 <div class="layout">
+
 <aside class="side">
-<button class="nav active" data-page="dashboard" onclick="showPage('dashboard',this)"><span>▦</span><span>لوحة القيادة</span></button>
-<button class="nav" data-page="sales" onclick="showPage('sales',this)"><span>🧾</span><span>المبيعات والفواتير</span></button>
-<button class="nav" data-page="customers" onclick="showPage('customers',this)"><span>👥</span><span>الزبائن والموزعون</span></button>
-<button class="nav" data-page="products" onclick="showPage('products',this)"><span>📦</span><span>السلع والمخزون</span></button>
-<button class="nav" data-page="payments" onclick="showPage('payments',this)"><span>💳</span><span>الدفعات والديون</span></button>
-<button class="nav" data-page="reports" onclick="showPage('reports',this)"><span>📊</span><span>التقارير</span></button>
-<button class="nav" data-page="settings" onclick="showPage('settings',this)"><span>⚙</span><span>إعدادات الشركة</span></button>
-<div class="side-note">بيانات هذا الإصدار تحفظ محليًا على نفس الجهاز والمتصفح. صدّر نسخة احتياطية بانتظام.</div>
+  <button class="nav active" data-page="dashboard" onclick="showPage('dashboard',this)"><span>▦</span><span>لوحة القيادة</span></button>
+  <button class="nav" data-page="pos" onclick="showPage('pos',this)"><span>🛒</span><span>البيع المباشر</span></button>
+  <button class="nav" data-page="sales" onclick="showPage('sales',this)"><span>🧾</span><span>المبيعات والفواتير</span></button>
+  <button class="nav" data-page="customers" onclick="showPage('customers',this)"><span>👥</span><span>الزبائن والموزعون</span></button>
+  <button class="nav" data-page="products" onclick="showPage('products',this)"><span>📦</span><span>السلع والمخزون</span></button>
+  <button class="nav" data-page="payments" onclick="showPage('payments',this)"><span>💳</span><span>الدفعات والديون</span></button>
+  <button class="nav" data-page="reports" onclick="showPage('reports',this)"><span>📊</span><span>التقارير</span></button>
+  <button class="nav" data-page="settings" onclick="showPage('settings',this)"><span>⚙</span><span>إعدادات الشركة</span></button>
+  <div class="side-note">بيانات هذا الإصدار تحفظ محليًا على نفس الجهاز والمتصفح. صدّر نسخة احتياطية بانتظام.</div>
 </aside>
+
 <main class="main">
+
+<section id="page-pos" class="hidden">
+  <div class="pos-top">
+    <div>
+      <div class="pos-total-title">المبلغ الإجمالي</div>
+      <div id="posTotal" class="pos-total-value">0.00</div>
+    </div>
+    <div class="pos-price-modes">
+      <label class="pos-switch">P.Super.Gros <input id="posSuperMode" type="checkbox" onchange="setPosPriceMode('super')"></label>
+      <label class="pos-switch">Prix.Gros <input id="posGrosMode" type="checkbox" onchange="setPosPriceMode('gros')"></label>
+    </div>
+  </div>
+
+  <div class="pos-tools">
+    <div class="pos-search"><input id="posSearch" placeholder="بحث عن منتج..." oninput="renderPosProducts()"></div>
+    <button class="pos-tool-btn" title="إعدادات" onclick="showPage('settings')">⚙</button>
+    <button class="pos-tool-btn" title="قائمة المنتجات" onclick="showPage('products')">▤</button>
+    <button class="pos-tool-btn barcode" title="إدخال رمز المنتج" onclick="posBarcode()">▥</button>
+  </div>
+
+  <div class="pos-list-head">
+    <span>اسم المنتج</span>
+    <span style="text-align:center">سعر المنتج</span>
+    <span style="text-align:center">الكمية المتوفرة</span>
+  </div>
+  <div id="posProductList" class="pos-product-list"></div>
+
+  <div class="pos-cart">
+    <div class="pos-cart-head">
+      <h3>المنتجات المختارة</h3>
+      <span class="count">عدد المنتجات: <b id="posCartCount">0</b></span>
+      <button class="btn-soft" onclick="clearPosCart()">مسح القائمة</button>
+    </div>
+    <div class="pos-list-head" style="grid-template-columns:minmax(0,1fr) 62px 78px 30px;padding:8px 6px;font-size:12px">
+      <span>اسم المنتج</span><span style="text-align:center">الكمية</span><span style="text-align:center">المجموع</span><span></span>
+    </div>
+    <div id="posCartLines"></div>
+  </div>
+
+  <div class="pos-bottom">
+    <div class="pos-customer">
+      <label for="posCustomer">اسم الزبون</label>
+      <select id="posCustomer" onchange="updatePosTotal()">
+        <option value="">اختيار الزبون</option>
+      </select>
+    </div>
+    <button class="pos-confirm" id="posConfirm" onclick="confirmPosSale()" disabled>تأكيد البيع</button>
+  </div>
+</section>
+
+<section id="page-dashboard">
+  <div class="page-head">
+    <div><h2>UNIVER PLAST</h2><p>منظومة إدارة المؤسسة والتوزيع</p></div>
+    <button class="btn-main" onclick="openSale()">＋ بيع جديد</button>
+  </div>
+  <div class="stats" id="dashboardStats"></div>
+  <div class="launcher-heading"><strong>مركز إدارة الشركة</strong><span>اختر القسم الذي تريد العمل فيه</span></div>
+  <div class="module-grid">
+    <button class="module-tile" onclick="showPage('pos')"><div class="module-art">🛒</div><strong>البيع المباشر</strong><small>إنشاء فاتورة وبيع السلع</small></button>
+    <button class="module-tile" onclick="showPage('sales')"><div class="module-art">🧾</div><strong>الفواتير</strong><small>متابعة المبيعات والطباعة</small></button>
+    <button class="module-tile" onclick="showPage('customers')"><div class="module-art">👥</div><strong>الزبائن والموزعون</strong><small>العناوين ومواقع GPS</small></button>
+    <button class="module-tile" onclick="showPage('products')"><div class="module-art">📦</div><strong>السلع والمخزون</strong><small>الأسعار والكميات</small></button>
+    <button class="module-tile" onclick="showPage('payments')"><div class="module-art">💳</div><strong>الدفعات والديون</strong><small>تسجيل التحصيلات</small></button>
+    <button class="module-tile" onclick="showPage('reports')"><div class="module-art">📊</div><strong>التقارير</strong><small>حركة البيع والمخزون</small></button>
+    <button class="module-tile" onclick="showPage('settings')"><div class="module-art">⚙️</div><strong>إعدادات الشركة</strong><small>بيانات المؤسسة</small></button>
+    <button class="module-tile" onclick="exportData()"><div class="module-art">💾</div><strong>نسخة احتياطية</strong><small>حفظ البيانات واسترجاعها</small></button>
+  </div>
+  <div class="panel"><h3>آخر المبيعات</h3><div id="recentSales"></div></div>
+</section>
+
+<section id="page-sales" class="hidden">
+  <div class="page-head"><div><h2>المبيعات والفواتير</h2><p>متابعة الفواتير والمبالغ المدفوعة والديون المتبقية.</p></div><button class="btn-main" onclick="openSale()">＋ فاتورة جديدة</button></div>
+  <div class="panel">
+    <div class="toolbar">
+      <input id="salesSearch" placeholder="ابحث برقم الفاتورة أو اسم الزبون..." oninput="renderSales()">
+      <select id="salesFilter" onchange="renderSales()" style="max-width:190px">
+        <option value="">كل الحالات</option><option value="مدفوعة">مدفوعة</option><option value="جزئية">مدفوعة جزئيًا</option><option value="غير مدفوعة">غير مدفوعة</option>
+      </select>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>رقم الفاتورة</th><th>التاريخ</th><th>الزبون</th><th>الإجمالي</th><th>المدفوع</th><th>المتبقي</th><th>الحالة</th><th>إجراءات</th></tr></thead>
+      <tbody id="salesTable"></tbody>
+    </table></div>
+  </div>
+</section>
+
+<section id="page-customers" class="hidden">
+  <div class="page-head"><div><h2>الزبائن والموزعون</h2><p>احفظ بيانات التاجر وعنوانه وموقع متجره لتسهيل الزيارات.</p></div><button class="btn-main" onclick="openCustomer()">＋ إضافة زبون</button></div>
+  <div class="panel">
+    <div class="toolbar">
+      <input id="customersSearch" placeholder="ابحث عن الاسم أو الهاتف أو العنوان..." oninput="renderCustomers()">
+      <button class="btn-soft" onclick="getLocationForCustomer()">📍 تحديد موقعي</button>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>الاسم</th><th>الهاتف</th><th>البلدية/العنوان</th><th>الموقع GPS</th><th>رصيد الحساب</th><th>إجراءات</th></tr></thead>
+      <tbody id="customersTable"></tbody>
+    </table></div>
+  </div>
+</section>
+
+<section id="page-products" class="hidden">
+  <div class="page-head"><div><h2>السلع والمخزون</h2><p>قائمة أسعار 2026 والكميات وأسعار الوحدة والكرتون.</p></div><button class="btn-main" onclick="openProduct()">＋ إضافة سلعة</button></div>
+  <div class="notice">المنتجات الجديدة تبدأ بمخزون صفر. أدخل الكمية الفعلية قبل البيع.</div>
+  <div class="panel">
+    <div class="toolbar"><input id="productsSearch" placeholder="ابحث باسم السلعة أو الرمز أو القطر..." oninput="renderProducts()"><button class="btn-soft" onclick="exportProductsCSV()">تصدير قائمة السلع</button></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>الرمز</th><th>اسم السلعة</th><th>الصنف/القطر</th><th>سعر الوحدة</th><th>عدد/كرتون</th><th>سعر الكرتون</th><th>المخزون</th><th>قيمة المخزون</th><th>إجراءات</th></tr></thead>
+      <tbody id="productsTable"></tbody>
+    </table></div>
+  </div>
+</section>
+
+<section id="page-payments" class="hidden">
+  <div class="page-head"><div><h2>الدفعات والديون</h2><p>سجّل التحصيلات وراقب الأرصدة المتبقية لكل تاجر.</p></div><button class="btn-main" onclick="openPayment()">＋ تسجيل دفعة</button></div>
+  <div class="stats" id="paymentStats"></div>
+  <div class="panel"><div class="table-wrap"><table>
+    <thead><tr><th>التاريخ</th><th>الزبون</th><th>المرجع</th><th>الطريقة</th><th>المبلغ</th><th>ملاحظة</th><th>إجراءات</th></tr></thead>
+    <tbody id="paymentsTable"></tbody>
+  </table></div></div>
+</section>
+
+<section id="page-reports" class="hidden">
+  <div class="page-head"><div><h2>التقارير</h2><p>ملخص المبيعات والتحصيلات وأرصدة الزبائن والمخزون.</p></div><button class="btn-soft" onclick="window.print()">طباعة التقرير</button></div>
+  <div class="stats" id="reportStats"></div>
+  <div class="panel"><h3>حسابات الزبائن</h3><div class="table-wrap"><table>
+    <thead><tr><th>الزبون</th><th>عدد الفواتير</th><th>قيمة الفواتير</th><th>الدفعات</th><th>الرصيد</th></tr></thead>
+    <tbody id="customerReport"></tbody>
+  </table></div></div>
+  <div class="panel"><h3>تقييم المخزون</h3><div class="table-wrap"><table>
+    <thead><tr><th>السلعة</th><th>المخزون</th><th>سعر الوحدة</th><th>قيمة المخزون</th></tr></thead>
+    <tbody id="stockReport"></tbody>
+  </table></div></div>
+</section>
+
+<section id="page-settings" class="hidden">
+  <div class="page-head"><div><h2>إعدادات الشركة</h2><p>بيانات SARL UNIVER PLAST التي تظهر على الفواتير.</p></div></div>
+  <div class="panel"><h3>معلومات المؤسسة</h3>
+    <div class="grid2">
+      <div class="field"><label>اسم الشركة</label><input id="setCompany"></div>
+      <div class="field"><label>الهاتف الرئيسي</label><input id="setPhone" inputmode="tel"></div>
+      <div class="field"><label>هاتف إضافي</label><input id="setPhone2" inputmode="tel"></div>
+      <div class="field"><label>هاتف المصلحة التجارية</label><input id="setCommercialPhone" inputmode="tel"></div>
+      <div class="field"><label>البريد الإلكتروني</label><input id="setEmail" type="email"></div>
+      <div class="field"><label>العنوان</label><input id="setAddress"></div>
+      <div class="field"><label>السجل التجاري / الرقم الجبائي</label><input id="setLegal" placeholder="أدخل المعلومات الرسمية"></div>
+      <div class="field"><label>العملة</label><select id="setCurrency"><option value="دج">دينار جزائري (دج)</option><option value="DA">DA</option></select></div>
+      <div class="field"><label>تنبيه انخفاض المخزون عند كمية</label><input id="setLowStock" type="number" min="0"></div>
+    </div>
+    <div class="form-actions"><button class="btn-main" onclick="saveSettings()">حفظ إعدادات الشركة</button></div>
+  </div>
+  <div class="panel"><h3>حماية البيانات</h3><p class="muted small">البيانات محفوظة محليًا في هذا المتصفح. احفظ نسخة احتياطية قبل تغيير الهاتف أو مسح بيانات المتصفح.</p><div class="form-actions"><button class="btn-soft" onclick="exportData()">⬇ تصدير نسخة احتياطية</button><button class="btn-soft" onclick="document.getElementById('importFile').click()">⬆ استرجاع نسخة احتياطية</button><button class="btn-danger" onclick="resetData()">مسح جميع البيانات</button></div></div>
+</section>
+
+</main>
+</div>
+
+<div class="foot">SARL UNIVER PLAST • Solution de haute qualité • info@univerplast.dz</div>
+<div id="modalRoot"></div>
+
+<script> const COMPANY_DEFAULTS = {
+  company: "SARL UNIVER PLAST",
+  tagline: "SOLUTION DE HAUTE QUALITÉ",
+  phone: "0770.59.05.46",
+  phone2: "0770.42.13.00",
+  commercialPhone: "0770.59.09.68",
+  email: "info@univerplast.dz",
+  address: "Beni Aziz, Wilaya de Sétif, Algérie",
+  legal: "",
+  currency: "دج",
+  lowStock: 10
+};
+
+const PRICE_LIST_2026 = [
+  {code:"UP001",name:"Manchon égal PEHD",diameter:"20 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP002",name:"Manchon égal PEHD",diameter:"25 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP003",name:"Manchon égal PEHD",diameter:"32 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP004",name:"Manchon égal PEHD",diameter:"40 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP005",name:"Manchon égal PEHD",diameter:"50 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP006",name:"Manchon égal PEHD",diameter:"63 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP007",name:"Manchon égal PEHD",diameter:"75 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP008",name:"Manchon égal PEHD",diameter:"90 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP009",name:"Coude 90° PEHD",diameter:"20 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP010",name:"Coude 90° PEHD",diameter:"25 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP011",name:"Coude 90° PEHD",diameter:"32 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP012",name:"Coude 90° PEHD",diameter:"40 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP013",name:"Coude 90° PEHD",diameter:"50 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP014",name:"Coude 90° PEHD",diameter:"63 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP015",name:"Coude 90° PEHD",diameter:"75 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP016",name:"Coude 90° PEHD",diameter:"90 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP017",name:"Té égal PEHD",diameter:"20 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP018",name:"Té égal PEHD",diameter:"25 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP019",name:"Té égal PEHD",diameter:"32 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP020",name:"Té égal PEHD",diameter:"40 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP021",name:"Té égal PEHD",diameter:"50 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP022",name:"Té égal PEHD",diameter:"63 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP023",name:"Té égal PEHD",diameter:"75 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP024",name:"Té égal PEHD",diameter:"90 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP025",name:"Réduction PEHD",diameter:"25 x 20 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP026",name:"Réduction PEHD",diameter:"32 x 20 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP027",name:"Réduction PEHD",diameter:"32 x 25 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP028",name:"Réduction PEHD",diameter:"40 x 32 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP029",name:"Réduction PEHD",diameter:"50 x 40 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP030",name:"Réduction PEHD",diameter:"63 x 50 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP031",name:"Réduction PEHD",diameter:"75 x 63 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP032",name:"Réduction PEHD",diameter:"90 x 75 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP033",name:"Bouchon PEHD",diameter:"20 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP034",name:"Bouchon PEHD",diameter:"25 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP035",name:"Bouchon PEHD",diameter:"32 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP036",name:"Bouchon PEHD",diameter:"40 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP037",name:"Bouchon PEHD",diameter:"50 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP038",name:"Bouchon PEHD",diameter:"63 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP039",name:"Bouchon PEHD",diameter:"75 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP040",name:"Bouchon PEHD",diameter:"90 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP041",name:"Raccord PEHD",diameter:"20 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP042",name:"Raccord PEHD",diameter:"25 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP043",name:"Raccord PEHD",diameter:"32 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP044",name:"Raccord PEHD",diameter:"40 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP045",name:"Raccord PEHD",diameter:"50 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP046",name:"Raccord PEHD",diameter:"63 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP047",name:"Raccord PEHD",diameter:"75 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP048",name:"Raccord PEHD",diameter:"90 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP049",name:"Collier de prise PEHD",diameter:"20 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP050",name:"Collier de prise PEHD",diameter:"25 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP051",name:"Collier de prise PEHD",diameter:"32 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP052",name:"Collier de prise PEHD",diameter:"40 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP053",name:"Collier de prise PEHD",diameter:"50 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP054",name:"Collier de prise PEHD",diameter:"63 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP055",name:"PP CoPo",diameter:"20 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP056",name:"PP CoPo",diameter:"25 mm",price:0,boxQty:0,cartonPrice:0},
+  {code:"UP057",name:"Accessoire PEHD",diameter:"Divers",price:0,boxQty:0,cartonPrice:0}
+];
+
+const DB_KEY = "univer_plast_db_v2026";
+
+function makeId(prefix="ID"){
+  return prefix + "-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2,7);
+}
+
+function emptyDB(){
+  return {
+    settings:{...COMPANY_DEFAULTS},
+    products:[],
+    customers:[],
+    sales:[],
+    payments:[],
+    version:2026
+  };
+}
+
+function loadDB(){
+  let db;
+  try{
+    db=JSON.parse(localStorage.getItem(DB_KEY)||"null");
+  }catch(e){
+    db=null;
+  }
+  if(!db || typeof db!=="object") db=emptyDB();
+  db.settings={...COMPANY_DEFAULTS,...(db.settings||{})};
+  db.products=Array.isArray(db.products)?db.products:[];
+  db.customers=Array.isArray(db.customers)?db.customers:[];
+  db.sales=Array.isArray(db.sales)?db.sales:[];
+  db.payments=Array.isArray(db.payments)?db.payments:[];
+  db.version=2026;
+
+  PRICE_LIST_2026.forEach(item=>{
+    const found=db.products.find(p=>p.code===item.code);
+    if(found){
+      if(!found.diameter) found.diameter=item.diameter;
+      if(!found.name) found.name=item.name;
+      if(!Number(found.price)) found.price=item.price;
+      if(!Number(found.boxQty)) found.boxQty=item.boxQty;
+      if(!Number(found.cartonPrice)) found.cartonPrice=item.cartonPrice;
+    }else{
+      db.products.push({
+        id:makeId("PR"),
+        ...item,
+        category:"PEHD • PN16",
+        stock:0,
+        minStock:db.settings.lowStock||10
+      });
+    }
+  });
+
+  saveDB(false);
+  return db;
+}
+
+let db=loadDB();
+let posCart=[];
+let posPriceMode="unit";
+let editingCustomerId=null;
+let editingProductId=null;
+
+function saveDB(write=true){
+  if(write) localStorage.setItem(DB_KEY,JSON.stringify(db));
+}
+
+function money(value){
+  return (Number(value)||0).toLocaleString("fr-DZ",{
+    minimumFractionDigits:2,
+    maximumFractionDigits:2
+  })+" "+(db.settings.currency||"دج");
+}
+
+function number(value){
+  return Number(value)||0;
+}
+
+function esc(value){
+  return String(value??"").replace(/[&<>"']/g,ch=>({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  })[ch]);
+}
+
+function today(){
+  return new Date().toISOString().slice(0,10);
+}
+
+function customerName(id){
+  const c=db.customers.find(x=>x.id===id);
+  return c?c.name:"زبون غير محدد";
+}
+
+function salePaid(sale){
+  return number(sale.paid)+db.payments
+    .filter(p=>p.saleId===sale.id)
+    .reduce((sum,p)=>sum+number(p.amount),0);
+}
+
+function saleRemaining(sale){
+  return Math.max(0,number(sale.total)-salePaid(sale));
+}
+
+function saleStatus(sale){
+  const remaining=saleRemaining(sale);
+  if(remaining<=0) return "مدفوعة";
+  if(salePaid(sale)>0) return "جزئية";
+  return "غير مدفوعة";
+}
+
+function customerBalance(customerId){
+  return db.sales.filter(s=>s.customerId===customerId)
+    .reduce((sum,s)=>sum+saleRemaining(s),0);
+}
+
+function saveAndRender(){
+  saveDB();
+  renderAll();
+} function showPage(page, btn){
+  document.querySelectorAll("main > section").forEach(section=>{
+    section.classList.add("hidden");
+  });
+
+  const target=document.getElementById("page-"+page);
+  if(target) target.classList.remove("hidden");
+
+  document.querySelectorAll(".nav").forEach(nav=>{
+    nav.classList.toggle("active",nav.dataset.page===page);
+  });
+
+  renderAll();
+
+  if(page==="pos"){
+    renderPosProducts();
+    renderPosCart();
+  }
+}
+
+function renderAll(){
+  renderDashboard();
+  renderSales();
+  renderCustomers();
+  renderProducts();
+  renderPayments();
+  renderReports();
+  syncSettings();
+}
+
+function stat(label,value,note=""){
+  return `
+    <div class="stat-card">
+      <div class="stat-label">${esc(label)}</div>
+      <div class="stat-value">${value}</div>
+      ${note?`<div class="stat-note">${esc(note)}</div>`:""}
+    </div>
+  `;
+}
+
+function table(headers, rows){
+  return `
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>${headers.map(h=>`<th>${esc(h)}</th>`).join("")}</tr>
+        </thead>
+        <tbody>
+          ${rows.length?rows.join(""):
+            `<tr><td colspan="${headers.length}" class="empty-cell">لا توجد بيانات لعرضها</td></tr>`}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function totalSale(sale){
+  return number(sale.total);
+}
+
+function renderDashboard(){
+  const todaySales=db.sales.filter(s=>String(s.date||"").slice(0,10)===today());
+  const salesToday=todaySales.reduce((sum,s)=>sum+totalSale(s),0);
+  const totalSales=db.sales.reduce((sum,s)=>sum+totalSale(s),0);
+  const totalStock=db.products.reduce((sum,p)=>sum+number(p.stock),0);
+  const stockValue=db.products.reduce((sum,p)=>sum+number(p.stock)*number(p.price),0);
+  const outstanding=db.sales.reduce((sum,s)=>sum+saleRemaining(s),0);
+
+  const stats=document.getElementById("dashboardStats");
+  if(stats){
+    stats.innerHTML=
+      stat("مبيعات اليوم",money(salesToday),"إجمالي فواتير اليوم")+
+      stat("إجمالي المبيعات",money(totalSales),"كل الفواتير المسجلة")+
+      stat("السلع في المخزون",totalStock,db.products.length+" صنف")+
+      stat("قيمة المخزون",money(stockValue),"بحسب سعر الوحدة")+
+      stat("ديون الزبائن",money(outstanding),"المبالغ غير المحصلة");
+  }
+
+  const recent=document.getElementById("recentSales");
+  if(recent){
+    const rows=[...db.sales]
+      .sort((a,b)=>String(b.date||"").localeCompare(String(a.date||"")))
+      .slice(0,8)
+      .map(s=>`
+        <tr>
+          <td>${esc(s.number||s.id)}</td>
+          <td>${esc(customerName(s.customerId))}</td>
+          <td>${esc(s.date||"—")}</td>
+          <td><b>${money(totalSale(s))}</b></td>
+          <td>${esc(saleStatus(s))}</td>
+          <td><button class="btn-soft" onclick="printSale('${s.id}')">طباعة</button></td>
+        </tr>
+      `);
+
+    recent.innerHTML=table(
+      ["رقم الفاتورة","الزبون","التاريخ","المبلغ","الحالة","إجراء"],
+      rows
+    );
+  }
+
+  const alerts=document.getElementById("alerts");
+  if(alerts){
+    const low=db.products.filter(p=>number(p.stock)<=number(p.minStock??db.settings.lowStock));
+    alerts.innerHTML=low.length
+      ?`<div class="alert-box">
+          <b>تنبيه المخزون المنخفض: ${low.length} صنف</b>
+          <div>${low.slice(0,8).map(p=>esc(p.name)+" ("+number(p.stock)+")").join("، ")}</div>
+        </div>`
+      :`<div class="success-box">المخزون لا يحتوي على أصناف تحت حد التنبيه.</div>`;
+  }
+}
+
+function renderProducts(){
+  const search=document.getElementById("productsSearch");
+  const q=(search?.value||"").trim().toLowerCase();
+
+  const list=db.products.filter(p=>
+    `${p.name||""} ${p.code||""} ${p.category||""} ${p.diameter||""}`
+      .toLowerCase().includes(q)
+  );
+
+  const root=document.getElementById("productsTable");
+  if(!root)return;
+
+  root.innerHTML=table(
+    ["الرمز","اسم السلعة","الصنف/القطر","سعر الوحدة","عدد/كرتون","سعر الكرتون","المخزون","قيمة المخزون","إجراءات"],
+    list.map(p=>`
+      <tr>
+        <td>${esc(p.code||"—")}</td>
+        <td><b>${esc(p.name)}</b></td>
+        <td>${esc(p.category||p.diameter||"—")}</td>
+        <td>${money(p.price)}</td>
+        <td>${number(p.boxQty)}</td>
+        <td>${money(p.cartonPrice)}</td>
+        <td>
+          <span class="badge ${number(p.stock)<=number(db.settings.lowStock)?"orange":""}">
+            ${number(p.stock)}
+          </span>
+        </td>
+        <td>${money(number(p.stock)*number(p.price))}</td>
+        <td>
+          <button class="btn-soft" onclick="openProduct('${p.id}')">تعديل</button>
+          <button class="btn-danger" onclick="deleteProduct('${p.id}')">حذف</button>
+        </td>
+      </tr>
+    `)
+  );
+}
+
+function
