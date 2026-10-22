@@ -40,19 +40,19 @@ button.d{color:var(--dg)}
 .tool-icons{display:flex;gap:10px;font-size:20px;color:#4b4a85}
 
 .prod-table{background:#fdf2ee;max-height:28vh;overflow-y:auto;border-bottom:1px solid #e2e5ea}
-.prod-row{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid #f2dfd8;font-weight:700;font-size:14px;color:#111}
+.prod-row{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid #f2dfd8;font-weight:700;font-size:14px;color:#111;cursor:pointer}
 .prod-row .p-name{flex:1;text-align:right}
-.prod-row .p-price{width:80px;text-align:center}
+.prod-row .p-price{width:90px;text-align:center}
 .prod-row .p-stock{width:110px;text-align:left}
 
 .table-header-bar{background:#4b4a85;color:#fff;display:flex;padding:8px 12px;font-size:13px;font-weight:700;text-align:center}
 .table-header-bar div{flex:1}
 
 .cart-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:8px;background:#fff;min-height:20vh}
-.cart-card{background:#f4f5f6;border-radius:6px;padding:8px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px}
+.cart-card{background:#f4f5f6;border-radius:6px;padding:8px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px;position:relative}
 .cart-card .c-title{font-size:13px;font-weight:700;color:#111;margin-bottom:2px}
 .cart-card .c-price{background:#e8380d;color:#fff;padding:2px 12px;font-size:15px;font-weight:700;border-radius:2px}
-.cart-card .c-qty{background:#fde047;color:#111;padding:2px 8px;font-size:15px;font-weight:800;border-radius:2px}
+.cart-card .c-qty{background:#fde047;color:#111;padding:2px 8px;font-size:14px;font-weight:800;border-radius:2px}
 
 .bottom-action-bar{position:fixed;left:0;right:0;bottom:0;display:flex;background:#fff;border-top:1px solid #ccc;z-index:10}
 .cus-select-wrap{flex:1;display:flex;align-items:center;padding:0 8px;border-left:1px solid #eee}
@@ -64,7 +64,6 @@ button.d{color:var(--dg)}
 .dg{background:var(--card);border-radius:12px;padding:16px;width:100%;max-width:420px}
 
 .fs-home{padding:8px 0 28px}.fs-hero{background:linear-gradient(135deg,#25245f,#4b4a85 60%,#4e9bba);color:#fff;border-radius:18px;padding:18px;margin-bottom:12px}.fs-hero h2{margin:0 0 6px;font-size:22px}.fs-hero p{margin:0;opacity:.9;font-size:14px}.fs-metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}.fs-metric{background:var(--card);padding:13px;border-radius:13px;box-shadow:0 1px 4px #0001}.fs-metric small{display:block;color:var(--mut);margin-bottom:6px}.fs-metric b{font-size:20px}
-.fs-stop{background:var(--card);padding:12px;border-radius:13px;margin:8px 0;border:1px solid var(--br)}.fs-stop.done{opacity:.7}.fs-stop-head{display:flex;gap:8px;align-items:center}.fs-stop-head .grow{flex:1;min-width:0}.fs-chip{font-size:12px;padding:3px 8px;border-radius:20px;background:var(--in);display:inline-block;margin-top:4px}.fs-mini{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.fs-mini button{flex:1;min-width:90px}.fs-note{width:100%;min-height:60px;border:1px solid var(--br);border-radius:8px;padding:8px;background:var(--in);color:var(--tx);font:inherit;margin-top:6px}
 
 #receipt{display:none}
 @media print{
@@ -95,25 +94,24 @@ try{var r=localStorage.getItem(K);if(r){var o=JSON.parse(r);for(var k in o)S[k]=
 function save(){try{localStorage.setItem(K,JSON.stringify(S));return true}catch(e){toast('تعذّر حفظ البيانات.');return false}}
 
 var SEED='ME110020|MANCHON égale DN20 PN16|95|70|6650;ME110025|MANCHON égale DN25 PN16|48|105|5040;ME110032|MANCHON égale DN32 PN16|65|150|9750;ME110040|MANCHON égale DN40 PN16|32|260|8320;ME110050|MANCHON égale DN50 PN16|40|420|16800;ME110063|MANCHON égale DN63 PN16|20|580|11600;ME110075|MANCHON égale DN75 PN16|16|920|14720;ME110090|MANCHON égale DN90 PN16|11|1220|13420;BE660025|BOUCHON Ø25 PN16|100|75|7500;BE660040|BOUCHON Ø40 PN16|34|155|5270;BE660050|BOUCHON Ø50 PN16|18|235|4230;BE660063|BOUCHON Ø63 PN16|22|325|7150;CE550020|COUDE égale DN20 PN16|85|72|6120';
-function seedP(){SEED.split(';').forEach(function(l){var a=l.split('|'),p=S.products.filter(function(x){return x.k===a[0]})[0];if(!p)S.products.push({id:uid(),k:a[0],n:a[1],bx:+a[2],p:+a[3],bc:+a[4],c:0,s:100,truck:+a[2]});});S.seeded=1;save()}
+function seedP(){SEED.split(';').forEach(function(l){var a=l.split('|'),p=S.products.filter(function(x){return x.k===a[0]})[0];if(!p)S.products.push({id:uid(),k:a[0],n:a[1],bx:+a[2],p:+a[3],bc:+a[4],c:0,s:100,truck:20});});S.seeded=1;save()}
 if(!S.products.length&&!S.seeded)seedP();
 if(!S.customers.length){S.customers=[{id:uid(),n:'مؤسسة السباكة الحديثة',debt:15000,gps:'36.5,5.4'},{id:uid(),n:'محطة الأنابيب المتطورة',debt:8200,gps:''}];save();}
 
 var T=[['route','جولة الموزّع','🗺️'],['truck','مخزون الشاحنة','🚚'],['sale','بيع / طلبية','🛒'],['hist','المبيعات','📊'],['prods','المخزن','🏬'],['cus','الزبائن','🤝'],['exp','المصاريف','🧮'],['stat','الإحصاء','📈']];
 var v='home',cart=[],q='',cid='';
-S.products.forEach(function(p){if(p.truck==null)p.truck=20; if(p.s==null)p.s=100});
+S.products.forEach(function(p){if(p.truck==null||p.truck>1000)p.truck=20;});
 
 function $(i){return document.getElementById(i)}
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-function f(n){return (Math.round(n*100)/100).toFixed(2)+' '+S.shop.cur}
+function f(n){return (Math.round((n||0)*100)/100).toFixed(2)+' '+S.shop.cur}
 function dt(x){return new Date(x).toLocaleString('ar-DZ-u-nu-latn')}
 function uid(){return Date.now()+Math.random()}
 function toast(m){var t=document.createElement('div');t.className='toast';t.textContent=m;document.body.appendChild(t);setTimeout(function(){if(t.parentNode)t.parentNode.removeChild(t)},3000)}
 
 function go(x){v=x;render();window.scrollTo(0,0)}
 function render(){
- var fl=v==='sale';$('hd').style.display=fl?'none':'';
- $('hd').innerHTML=(v==='home'?'<span class="logo">🧾</span>':'<button onclick="go(\'home\')">→</button>')+'<span class="ti">'+esc(S.shop.name)+'</span>';
+ var fl=v==='sale';$('hd').style.display=fl?'none':'';$('hd').innerHTML=(v==='home'?'<span class="logo">🧾</span>':'<button onclick="go(\'home\')">→</button>')+'<span class="ti">'+esc(S.shop.name)+'</span>';
  var V={home:homeV,route:routeV,truck:truckV,sale:saleV,hist:histV,prods:stkV,cus:cusV,exp:expV,stat:statV};
  $('app').innerHTML=V[v]?V[v]():homeV();
 }
@@ -129,183 +127,38 @@ function homeV(){
  return h;
 }
 
+function sub(){
+ return cart.reduce(function(sum, item){ return sum + (item.p * item.q); }, 0);
+}
+
+function addToCartById(id){
+ var p = S.products.filter(function(x){return x.id === id})[0];
+ if(!p) return;
+ var l = cart.filter(function(x){return x.id === p.id})[0];
+ if(l){
+   l.q++;
+ } else {
+   cart.push({id: p.id, n: p.n, p: p.p, q: 1});
+ }
+ render();
+}
+
+function removeFromCart(id){
+ cart = cart.filter(function(x){return x.id !== id});
+ render();
+}
+
 function saleV(){
  var list=S.products.filter(function(p){return !q||(p.n+' '+(p.k||'')).toLowerCase().indexOf(q.toLowerCase())>-1});
  var h='<div class="sale-page">';
  h+='<div class="sale-top-bar"><div class="switch-group"><div class="switch-item">P.Super.Gros <input type="checkbox"></div><div class="switch-item">Prix.Gros <input type="checkbox"></div></div><div style="font-size:18px;font-weight:800;color:#333">المبلغ الإجمالي</div><button onclick="go(\'home\')" style="border:0;background:transparent;font-size:22px">⌂</button></div>';
  h+='<div class="total-banner"><div class="val">'+f(sub())+'</div></div>';
  h+='<div class="tool-bar"><span style="font-size:18px">🔍</span><input id="q" placeholder="بحث عن منتج..." value="'+esc(q)+'" oninput="q=this.value;render()"><div class="tool-icons">⚙️ 📋 🔲</div></div>';
- h+='<div class="prod-table">'+list.map(function(p,i){return '<div class="prod-row" onclick="addToCart('+i+')"><div class="p-name">'+esc(p.n)+'</div><div class="p-price">'+f(p.p)+'</div><div class="p-stock">بالشاحنة: '+(+p.truck||0)+'</div></div>'}).join('')+'</div>';
- h+='<div class="table-header-bar"><div>اسم المنتج</div><div>سعر المنتج</div><div>#</div><div>الكمية</div></div>';
- h+='<div class="cart-grid">'+cart.map(function(l,i){
-   var cp=S.products.filter(function(x){return x.id===l.id})[0];
-   return '<div class="cart-card"><div class="c-title">'+esc(l.n)+'</div><div class="c-price">'+f(l.p)+'</div><div class="c-qty">'+l.q+' x ['+(cp?cp.truck:0)+']</div></div>'
+ h+='<div class="prod-table">'+list.map(function(p){
+   return '<div class="prod-row" onclick="addToCartById('+JSON.stringify(p.id)+')"><div class="p-name">'+esc(p.n)+'</div><div class="p-price">'+f(p.p)+'</div><div class="p-stock">بالشاحنة: '+(+p.truck||20)+'</div></div>';
  }).join('')+'</div>';
- h+='<div class="bottom-action-bar"><div class="cus-select-wrap">👤 <select onchange="cid=this.value"><option value="">اسم الزبون</option>'+S.customers.map(function(c,i){return '<option value="'+i+'"'+(String(i)===cid?' selected':'')+'>'+esc(c.n)+'</option>'}).join('')+'</select></div><button class="btn-confirm-sale" onclick="checkout(true)">تأكيد</button></div>';
- h+='</div>';
- return h;
-}
-
-function addToCart(i){var p=S.products[i],l=cart.filter(function(x){return x.id===p.id})[0];if(l)l.q++;else cart.push({id:p.id,n:p.n,p:p.p,q:1});render()}
-function sub(){return cart.reduce(function(a,x){return a+(x.p*x.q)},0)}
-
-function checkout(pr){
- if(!cart.length){toast('السلة فارغة');return;}
- var t=sub(),cu=cid===''?null:S.customers[cid],pd=t;
- if(cu)cu.debt=Math.max(0,(cu.debt||0)+t-pd);
- cart.forEach(function(l){var p=S.products.filter(function(x){return x.id===l.id})[0];if(p)p.truck=Math.max(0,(+p.truck||0)-l.q)});
- var inv={no:S.seq++,d:new Date().toISOString(),c:cu?cu.n:'',items:cart.slice(),t:t,paid:pd};
- S.invoices.unshift(inv);save();cart=[];cid='';render();if(pr)printInv(inv);
-}
-
-function printInv(x){
- var w=S.shop.width,A=w==='A4';
- $('pg').textContent='@page{size:'+(A?'A4':w+'mm auto')+';margin:0}@media print{#receipt{width:'+(A?'auto':w+'mm')+';font-size:12px}}';
- var parts = [
-   { title: 'نسخة الزبون (المشتري)', note: 'تسلم للزبون مع البضاعة' },
-   { title: 'نسخة الموزّع (السيارة)', note: 'نسخة السائق والمتابعة' },
-   { title: 'نسخة الإدارة (المحاسبة)', note: 'ترسل للإدارة نهاية الجولة' }
- ];
- var fullHtml = '';
- parts.forEach(function(p){
-   fullHtml += '<div class="receipt-part">';
-   fullHtml += '<div class="receipt-tag">--- ' + p.title + ' ---</div>';
-   fullHtml += '<h2>'+esc(S.shop.name)+'</h2><div class="c">وصل بيع وتسليم بضاعة</div><div class="c" style="font-size:11px">'+p.note+'</div><hr><div>وصل رقم: '+x.no+'</div><div>'+dt(x.d)+'</div>'+(x.c?'<div>الزبون: '+esc(x.c)+'</div>':'')+'<hr><table>';
-   x.items.forEach(function(l){fullHtml+='<tr><td>'+esc(l.n)+'<br>'+l.q+' × '+f(l.p)+'</td><td class="e">'+f(l.q*l.p)+'</td></tr>'});
-   fullHtml+='</table><hr><table><tr class="b"><td>الإجمالي</td><td class="e">'+f(x.t)+'</td></tr><tr><td>المدفوع</td><td class="e">'+f(x.paid)+'</td></tr></table><hr><div class="c">شكراً لتعاملكم مع UNIVER PLAST</div>';
-   fullHtml += '</div>';
- });
- $('receipt').innerHTML=fullHtml;
- setTimeout(function(){window.print()},100);
-}
-
-function askF(title,fields,cb){
- var ov=document.createElement('div');ov.className='ov';
- var h='<div class="dg"><h3>'+esc(title)+'</h3>';
- fields.forEach(function(f,i){h+='<label style="display:block;text-align:right;margin:6px 0 2px">'+esc(f[0])+'</label><input id="fld_'+i+'" type="text" value="'+esc(f[1])+'">';});
- h+='<div style="display:flex;gap:8px;margin-top:14px"><button class="p" id="okBtn" style="flex:1">موافق</button><button id="clBtn" style="flex:1">إلغاء</button></div></div>';
- ov.innerHTML=h;document.body.appendChild(ov);
- var inp=$('fld_0');if(inp){inp.focus();inp.select()}
- ov.querySelector('#okBtn').onclick=function(){
-  var res=fields.map(function(f,i){return $('fld_'+i).value});
-  document.body.removeChild(ov);cb(res);
- };
- ov.querySelector('#clBtn').onclick=function(){document.body.removeChild(ov)};
-}
-
-function addCusPrompt(){
- askF('إضافة زبون جديد مع عنوان GPS',[['اسم الزبون',''],['الدين الأولي (دج)',0],['إحداثيات GPS (مثال: 36.5,5.4)','']],function(r){
-  var name=r[0].trim(),debt=parseFloat(r[1])||0,gps=r[2].trim();
-  if(!name){toast('يرجى كتابة اسم الزبون');return}
-  S.customers.push({id:uid(),n:name,debt:debt,gps:gps});
-  save();render();toast('تمت إضافة الزبون بنجاح');
- });
-}
-
-function payC(i){
- var c=S.customers[i];
- askF('تسديد دين من : '+c.n,[['المبلغ المسدد نقداً',c.debt||0]],function(r){
-  var x=parseFloat(r[0]);if(!(x>0))return;
-  var paidAmt=Math.min(x,c.debt||0);
-  (S.payments=S.payments||[]).unshift({d:new Date().toISOString(),ci:c.id,n:c.n,a:paidAmt});
-  c.debt=Math.max(0,(c.debt||0)-paidAmt);
-  save();render();
-  printReceipt(c.n, paidAmt, c.debt);
- });
-}
-
-function printReceipt(cusName, paidAmt, remDebt){
- var w=S.shop.width,A=w==='A4';
- $('pg').textContent='@page{size:'+(A?'A4':w+'mm auto')+';margin:0}@media print{#receipt{width:'+(A?'auto':w+'mm')+';font-size:12px}}';
- var parts = [
-   { title: 'نسخة الزبون (المشتري)', note: 'تسلم للزبون كإثبات سداد' },
-   { title: 'نسخة الموزّع (السيارة)', note: 'تبقى بحوزة السائق للمطابقة' },
-   { title: 'نسخة الإدارة (المحاسبة)', note: 'تسلم للإدارة نهاية الجولة' }
- ];
- var fullHtml = '';
- parts.forEach(function(p){
-   fullHtml += '<div class="receipt-part">';
-   fullHtml += '<div class="receipt-tag">--- ' + p.title + ' ---</div>';
-   fullHtml += '<h2>'+esc(S.shop.name)+'</h2><div class="c">سند استلام أموال وتحصيل دين</div><div class="c" style="font-size:11px">'+p.note+'</div><div class="c">'+dt(new Date().toISOString())+'</div><hr>';
-   fullHtml += '<table><tr><td>اسم الزبون:</td><td class="e"><b>'+esc(cusName)+'</b></td></tr><tr><td>المبلغ المسدد:</td><td class="e"><b>'+f(paidAmt)+'</b></td></tr><tr class="b"><td>الدين المتبقي:</td><td class="e">'+f(remDebt)+'</td></tr></table><hr><div class="c" style="font-size:11px">شكراً لتعاملكم مع مؤسسة UNIVER PLAST</div>';
-   fullHtml += '</div>';
- });
- $('receipt').innerHTML=fullHtml;
- setTimeout(function(){window.print()},100);
-}
-
-function cusV(){
- return '<button onclick="go(\'home\')" style="margin-bottom:10px;padding:8px 14px;font-weight:700">← الرئيسية</button>'
- +'<div class="card">'
- +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">'
- +'<b>🤝 قائمة الزبائن وعناوين GPS والتحصيل</b>'
- +'<button class="p" onclick="addCusPrompt()">➕ زبون جديد</button>'
- +'</div>'
- +S.customers.map(function(c,i){
-   return '<div class="line" style="padding:10px 0">'
-   +'<div class="n">'
-   +'<b style="font-size:16px">'+esc(c.n)+'</b><br>'
-   +'<span class="mut">الدين المستحق: <b class="red" style="font-size:15px">'+f(c.debt||0)+'</b></span>'
-   +(c.gps?'<br><a href="https://maps.google.com/?q='+c.gps+'" target="_blank" style="font-size:13px;color:#2563eb;text-decoration:none">📍 فتح موقع GPS</a>':'')
-   +'</div>'
-   +(c.debt>0?'<button class="p" onclick="payC('+i+')" style="padding:6px 10px;font-size:13px">💰 تسديد</button>':'')
-   +'</div>'
- }).join('')
- +'</div>';
-}
-
-function routeToday(){return new Date().toDateString()}
-function routeList(){if(!Array.isArray(S.routePlan))S.routePlan=[];return S.routePlan.filter(function(x){return x.day===routeToday()})}
-function routeAdd(i){var c=S.customers[i];if(!c)return;var L=routeList();if(L.some(function(x){return x.cid===c.id})){toast('الزبون موجود في الجولة');return}S.routePlan.push({id:uid(),cid:c.id,name:c.n,day:routeToday(),status:'todo',note:'',outcome:'',paidAmt:0});save();render()}
-function routeRemove(id){S.routePlan=S.routePlan.filter(function(x){return x.id!==id});save();render()}
-function routeMark(id,status){var x=S.routePlan.filter(function(a){return a.id===id})[0];if(!x)return;x.status=status;save();render()}
-
-function routeV(){
- var L=routeList(),done=L.filter(function(x){return x.status==='done'}).length,added=S.customers.filter(function(c){return !L.some(function(x){return x.cid===c.id})});
- var h='<button onclick="go(\'home\')" style="margin-bottom:10px">← الرئيسية</button><div class="card"><b>🗺️ تقرير جولة الموزّع اليومية</b><div class="st"><span>إجمالي المحطات اليوم</span><b>'+L.length+'</b></div><div class="st"><span>الزيارات المنجزة</span><b>'+done+'</b></div></div>';
- if(L.length)h+=L.map(function(x,i){var c=S.customers.filter(function(a){return String(a.id)===String(x.cid)})[0];return '<div class="fs-stop"><div class="fs-stop-head"><div class="grow"><b>'+(i+1)+'. '+esc((c&&c.n)||x.name)+'</b>'+(c&&c.gps?'<br><a href="https://maps.google.com/?q='+c.gps+'" target="_blank" style="font-size:13px">📍 فتح خريطة GPS</a>':'')+'</div></div>'
- +'<div class="fs-mini" style="margin-top:8px"><button class="p" onclick="routeMark('+JSON.stringify(x.id)+',\'done\')">✓ تمت الزيارة</button><button class="d" onclick="routeRemove('+JSON.stringify(x.id)+')">إزالة</button></div></div>'}).join('');else h+='<div class="card" style="text-align:center;color:#6b7280">لم يضاف زبائن للجولة اليوم.</div>';
- h+='<div class="card"><b>➕ إضافة زبون للجولة</b>'+added.map(function(c){return '<div class="line"><span class="n"><b>'+esc(c.n)+'</b></span><button class="p" onclick="routeAdd('+S.customers.indexOf(c)+')">إضافة</button></div>'}).join('')+'</div>';
- return h;
-}
-
-function truckV(){
- var total=0,rows='';
- S.products.forEach(function(p,i){var n=+p.truck||0;total+=n*(p.p||0);rows+='<div class="line"><span class="n"><b>'+esc(p.n)+'</b><br><small class="mut">المستودع: '+(p.s||0)+' · الشاحنة: <b>'+n+'</b></small></span><button class="p" onclick="truckLoad('+i+')">تعبئة</button></div>'});
- return '<button onclick="go(\'home\')" style="margin-bottom:10px">← الرئيسية</button><div class="card"><b>🚚 مخزون الشاحنة</b><div class="st"><span>قيمة بضاعة الشاحنة</span><b>'+f(total)+'</b></div></div><div class="card">'+rows+'</div>';
-}
-function truckLoad(i){var p=S.products[i];askF('تحميل للشاحنة: '+p.n,[['الكمية',10]],function(r){var q=parseFloat(r[0]);if(!(q>0))return;p.s=Math.max(0,(p.s||0)-q);p.truck=(+p.truck||0)+q;save();render()})}
-
-function stkV(){
- return '<button onclick="go(\'home\')" style="margin-bottom:10px">← الرئيسية</button><div class="card"><b>🏬 مخزون المستودع الرئيس</b></div><div class="card">'+S.products.map(function(p){return '<div class="line"><span class="n"><b>'+esc(p.n)+'</b><br><small class="mut">المتفرغ بالمستودع: <b>'+(p.s||0)+'</b></small></span><b>'+f(p.p)+'</b></div>'}).join('')+'</div>';
-}
-
-function addExpPrompt(){
- askF('تسجيل مصروف جديد',[['الوصف',''],['المبلغ (دج)',0]],function(r){
-  var desc=r[0].trim(),amt=parseFloat(r[1])||0;
-  if(!amt)return;
-  S.expenses.unshift({id:uid(),d:new Date().toISOString(),desc:desc||'مصروف عام',a:amt});
-  save();render();toast('تم تسجيل المصروف');
- });
-}
-
-function expV(){
- var list=S.expenses||[],tot=list.reduce(function(a,x){return a+x.a},0);
- return '<button onclick="go(\'home\')" style="margin-bottom:10px">← الرئيسية</button><div class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><b>🧮 المصاريف اليومية</b><button class="p" onclick="addExpPrompt()">➕ إضافة مصروف</button></div><div class="st"><span>إجمالي المصاريف</span><b class="red">'+f(tot)+'</b></div></div><div class="card">'+(list.map(function(x){return '<div class="line"><span class="n"><b>'+esc(x.desc)+'</b><br><small class="mut">'+dt(x.d)+'</small></span><b class="red">'+f(x.a)+'</b></div>'}).join('')||'<p class="mut">لا توجد مصاريف مسجلة</p>')+'</div>';
-}
-
-function statV(){
- var sales=S.invoices.reduce(function(a,x){return a+x.t},0);
- var paid=S.invoices.reduce(function(a,x){return a+(x.paid||0)},0);
- var exp=(S.expenses||[]).reduce(function(a,x){return a+x.a},0);
- return '<button onclick="go(\'home\')" style="margin-bottom:10px">← الرئيسية</button><div class="card"><b>📈 التقارير والإحصائيات</b><div class="st"><span>إجمالي المبيعات</span><b>'+f(sales)+'</b></div><div class="st"><span>إجمالي التحصيلات</span><b>'+f(paid)+'</b></div><div class="st"><span>إجمالي المصاريف</span><b class="red">'+f(exp)+'</b></div><div class="st"><span>صافي الصندوق</span><b>'+f(paid-exp)+'</b></div></div>';
-}
-
-function histV(){
- return '<button onclick="go(\'home\')" style="margin-bottom:10px">← الرئيسية</button><div class="card"><b>📊 سجل المبيعات</b>'+S.invoices.map(function(x){return '<div class="line"><span class="n"><b>وصل #'+x.no+'</b><br><small>'+dt(x.d)+' - '+(x.c||'نقدي')+'</small></span><b>'+f(x.t)+'</b></div>'}).join('')+'</div>';
-}
-
-render();
-</script>
-</body>
-</html>
+ h+='<div class="table-header-bar"><div>اسم المنتج</div><div>سعر المنتج</div><div>#</div><div>الكمية</div></div>';
+ h+='<div class="cart-grid">'+cart.map(function(l){
+   return '<div class="cart-card" onclick="removeFromCart('+JSON.stringify(l.id)+')"><div class="c-title">'+esc(l.n)+'</div><div class="c-price">'+f(l.p)+'</div><div class="c-qty">الكمية: '+l.q+'</div></div>';
+ }).join('')+'</div>';
+ h+='<div class="bottom-action-bar"><div class="cus-select-wrap">👤 <select onchange="cid=this.value"><option value="">اسم الزبون</option>'+S.customers.map(function(c,i){return '<option value="'+
