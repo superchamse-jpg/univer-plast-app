@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>UNIVER PLAST - نظام الموزع الميداني المحترف</title>
+<title>UNIVER PLAST - نظام الموزع الميداني الشامل</title>
 <meta name="theme-color" content="#4b4a85">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -77,8 +77,8 @@ body>*:not(#receipt){display:none!important}
 #receipt .e{text-align:left;white-space:nowrap}
 #receipt hr{border:0;border-top:1px dashed #000;margin:4px 0}
 #receipt .b{font-weight:700;font-size:14px}
-.receipt-part{margin-bottom:14px;padding-bottom:14px;border-bottom:2px dashed #000}
-.receipt-tag{text-align:center;font-weight:700;font-size:13px;background:#e5e7eb;color:#000;padding:3px;margin:4px 0;border:1px solid #000}
+.receipt-part{margin-bottom:12px;padding-bottom:12px;border-bottom:2px dashed #000}
+.receipt-tag{text-align:center;font-weight:700;font-size:13px;background:#eee;padding:2px;margin:4px 0;border:1px solid #000}
 }
 </style>
 </head>
@@ -96,7 +96,7 @@ function save(){try{localStorage.setItem(K,JSON.stringify(S));return true}catch(
 var SEED='ME110020|MANCHON égale DN20 PN16|95|70|6650;ME110025|MANCHON égale DN25 PN16|48|105|5040;ME110032|MANCHON égale DN32 PN16|65|150|9750;ME110040|MANCHON égale DN40 PN16|32|260|8320;ME110050|MANCHON égale DN50 PN16|40|420|16800;ME110063|MANCHON égale DN63 PN16|20|580|11600;ME110075|MANCHON égale DN75 PN16|16|920|14720;ME110090|MANCHON égale DN90 PN16|11|1220|13420;MR124025|MANCHON Reduit DN 40/25 PN16|50|215.55|10777.5;MR126340|MANCHON Reduit DN 63/40 PN16|18|435.5|7839;MR127550|MANCHON Reduit DN 75/50 PN16|9|837.5|7537.5;MR127563|MANCHON Reduit DN 75/63 PN16|18|875|15750;MR129063|MANCHON Reduit DN 90/63 PN16|13|1215.5|15801.5;MR129075|MANCHON Reduit DN 90/75 PN16|12|1235.5|14826;RM220020A|RACCORD Màle DN20*1/2" PN16|155|47|7285;RM220025B|RACCORD Màle DN25*3/4" PN16|80|75|6000;RM220032C|RACCORD Màle DN32*1" PN16|50|95|4750;RM220040D|RACCORD Màle DN40*1-1/4" PN16|60|180|10800;RM220050E|RACCORD Màle DN50*1-1/2" PN16|35|220|7700;RM220063F|RACCORD Màle DN63*2" PN16|18|345|6210;RM220063G|RACCORD Màle DN63*2 1/2" PN16|18|345|6210;RM220075G|RACCORD Màle DN75*2 1/2" PN16|12|545|6540;RM220075H|RACCORD Màle DN75*3" PN16|12|545|6540;RM220090H|RACCORD Màle DN90*3" PN16|16|785|12560;RF330020A|RACCORD Femelle DN20*1/2" PN16|155|65|10075;RF330025B|RACCORD Femelle DN25*3/4" PN16|80|75|6000;RF330032C|RACCORD Femelle DN32*1" PN16|50|115|5750;RF330040D|RACCORD Femelle DN40*1-1/4" PN16|50|180|9000;RF330050E|RACCORD Femelle DN50*1-1/2" PN16|34|285|9690;RF330063F|RACCORD Femelle DN63*2" PN16|18|395|7110;RF330075G|RACCORD Femelle DN75*2 1/2" PN16|13|637.8|8291.4;CE550020|COUDE égale DN20 PN16|85|72|6120;CE550025|COUDE égale DN25 PN16|45|115|5175;CE550032|COUDE égale DN32 PN16|27|165|4455;CE550040|COUDE égale DN40 PN16|30|265|7950;CE550050|COUDE égale DN50 PN16|15|415|6225;CE550063|COUDE égale DN63 PN16|18|595|10710;CE550075|COUDE égale DN75 PN16|12|975|11700;CM560020A|COUDE Màle DN20*1/2" PN16|150|51.2|7680;CM560025B|COUDE Màle DN25*3/4" PN16|80|78|6240;CM560032C|COUDE Màle DN32*1" PN16|44|109|4796;CM560040D|COUDE Màle DN40*1-1/4" PN16|50|192|9600;CF570020A|COUDE Femelle DN20*1/2" PN16|125|70|8750;CF570025B|COUDE Femelle DN25*3/4" PN16|75|108|8100;CF570032C|COUDE Femelle DN32*1" PN16|42|147|6174;CF570040D|COUDE Femelle DN40*1-1/4" PN16|48|245|11760;TE440020|Té égale DN20 PN16|55|115|6325;TE440025|Té égale DN25 PN16|28|178|4984;TE440032|Té égale DN32 PN16|18|235|4230;TE440040|Té égale DN40 PN16|20|395|7900;TE440050|Té égale DN50 PN16|20|595|11900;TE440063|Té égale DN63 PN16|12|875|10500;TE440075|Té égale DN75 PN16|7|1470|10290;BE660025|BOUCHON Ø25 PN16|100|75|7500;BE660040|BOUCHON Ø40 PN16|34|155|5270;BE660050|BOUCHON Ø50 PN16|18|235|4230;BE660063|BOUCHON Ø63 PN16|22|325|7150';
 function seedP(){var n=0,u=0;SEED.split(';').forEach(function(l){var a=l.split('|'),p=S.products.filter(function(x){return x.k===a[0]})[0];if(p){p.n=a[1];p.bx=+a[2];p.p=+a[3];p.bc=+a[4];u++}else{S.products.push({id:uid(),k:a[0],n:a[1],bx:+a[2],p:+a[3],bc:+a[4],c:0,s:'',truck:0});n++}});S.seeded=1;save();return [n,u]}
 if(!S.products.length&&!S.seeded)seedP();
-if(!S.customers.length){S.customers=[{id:uid(),n:'مؤسسة السباكة الحديثة',debt:15000,gps:''},{id:uid(),n:'محطة الأنابيب المتطورة',debt:8200,gps:''}];save();}
+if(!S.customers.length){S.customers=[{id:uid(),n:'مؤسسة السباكة الحديثة',debt:15000},{id:uid(),n:'محطة الأنابيب المتطورة',debt:8200}];save();}
 
 var T=[['route','جولة الموزّع','🗺️'],['truck','مخزون الشاحنة','🚚'],['sale','بيع / طلبية','🛒'],['hist','المبيعات','📊'],['prods','المخزن','🏬'],['cus','الزبائن','🤝'],['exp','المصاريف','🧮'],['stat','الإحصاء','📈']];
 var v='home',cart=[],q='',disc='',paid='',cid='',saleMode='direct';
@@ -113,7 +113,7 @@ function toast(m){var t=document.createElement('div');t.className='toast';t.text
 
 function go(x){v=x;render();window.scrollTo(0,0)}
 function render(){
- var fl=v==='sale'||v==='hist'||v==='inv'||v==='cus'||v==='cform'||v==='prods'||v==='truck'||v==='route'||v==='exp'||v==='stat';$('hd').style.display=fl?'none':'';document.documentElement.classList.toggle('flat',fl);$('app').className=fl?'sm':'';
+ var fl=v==='sale'||v==='hist'||v==='inv'||v==='cus'||v==='cform'||v==='prods'||v==='truck'||v==='route';$('hd').style.display=fl?'none':'';document.documentElement.classList.toggle('flat',fl);$('app').className=fl?'sm':'';
  $('hd').innerHTML=(v==='home'?'<span class="logo">🧾</span>':'<button onclick="go(\'home\')">→</button>')+'<span class="ti">'+esc(S.shop.name)+'</span>';
  var V={home:homeV,route:routeV,truck:truckV,sale:saleV,hist:histV,prods:stkV,cus:cusV,exp:expV,stat:statV};
  $('app').innerHTML=V[v]?V[v]():homeV();
@@ -125,7 +125,7 @@ function homeV(){
  var paid=S.invoices.filter(function(x){return !x.visit&&new Date(x.d).toDateString()===today}).reduce(function(a,x){return a+(x.paid||0)},0);
  var debt=S.customers.reduce(function(a,c){return a+(c.debt||0)},0);
  var h='<div class="fs-home"><div class="fs-hero"><h2>UNIVER PLAST | الموزّع الميداني</h2><p>'+esc(new Date().toLocaleDateString('ar-DZ'))+' · إدارة الجولة، المبيعات والتحصيل المباشر.</p><div style="margin-top:12px;font-size:14px">إنجاز الجولة اليومية: <b>'+done+' / '+vis.length+'</b></div></div>';
- h+='<div class="fs-metrics"><div class="fs-metric"><small>مبيعات اليوم</small><b>'+f(sales)+'</b></div><div class="fs-metric"><small>تحصيلات اليوم</small><b>'+f(paid)+'</b></div><div class="fs-metric" style="grid-column:span 2"><small>إجمالي الديون</small><b class="red">'+f(debt)+'</b></div></div>';
+ h+='<div class="fs-metrics"><div class="fs-metric"><small>مبيعات اليوم</small><b>'+f(sales)+'</b></div><div class="fs-metric"><small>تحصيلات اليوم</small><b>'+f(paid)+'</b></div><div class="fs-metric"><small>إجمالي الديون</small><b class="red">'+f(debt)+'</b></div></div>';
  h+='<div class="tiles" style="margin-bottom:12px">'+T.map(function(t){return '<button class="tile" onclick="go(\''+t[0]+'\')"><i>'+t[2]+'</i><span>'+t[1]+'</span></button>'}).join('')+'</div>';
  h+='<div class="card"><b>مهمات الجولة اليومية</b><div class="st"><span>مخطط الزيارات اليوم</span><b>'+vis.length+'</b></div><div class="st"><span>زيارات منجزة</span><b>'+done+'</b></div><button class="p" style="width:100%;margin-top:10px" onclick="go(\'route\')">متابعة الجولة</button></div>';
  h+='</div>';return h;
@@ -149,7 +149,7 @@ function routeSaveNote(id){
 function routeV(){
  var L=routeList(),done=L.filter(function(x){return x.status==='done'}).length,added=S.customers.filter(function(c){return !L.some(function(x){return x.cid===c.id})});
  var h='<button onclick="go(\'home\')" style="margin-bottom:10px">← الرئيسية</button><div class="card"><b>🗺️ تقرير جولة الموزّع اليومية</b><p class="mut">سجّل المبيعات، التحصيلات النقدية، وملاحظات السوق أثناء الزيارة.</p><div class="st"><span>إجمالي المحطات اليوم</span><b>'+L.length+'</b></div><div class="st"><span>الزيارات المنجزة</span><b>'+done+'</b></div><button class="p" style="width:100%;margin-top:10px" onclick="printRouteSummary()">🖨️ طباعة ملخص الجولة للإدارة</button></div>';
- if(L.length)h+=L.map(function(x,i){var c=S.customers.filter(function(a){return String(a.id)===String(x.cid)})[0];return '<div class="fs-stop '+(x.status==='done'?'done':'')+'"><div class="fs-stop-head"><div class="grow"><b>'+(i+1)+'. '+esc((c&&c.n)||x.name||'زبون')+'</b>'+(c&&c.gps?'<br><a href="https://maps.google.com/?q='+c.gps+'" target="_blank" style="font-size:13px">📍 فتح خريطة GPS</a>':'')+'<span class="fs-chip">'+(x.status==='done'?'تمت الزيارة':x.status==='skip'?'تأجيل':'معلقة')+'</span></div></div>'
+ if(L.length)h+=L.map(function(x,i){var c=S.customers.filter(function(a){return String(a.id)===String(x.cid)})[0];return '<div class="fs-stop '+(x.status==='done'?'done':'')+'"><div class="fs-stop-head"><div class="grow"><b>'+(i+1)+'. '+esc((c&&c.n)||x.name||'زبون')+'</b><span class="fs-chip">'+(x.status==='done'?'تمت الزيارة':x.status==='skip'?'تأجيل':'معلقة')+'</span></div></div>'
  +'<select id="ro_'+x.id+'" style="margin-top:8px"><option value=""'+(!x.outcome?' selected':'')+'>نتيجة الزيارة...</option><option '+(x.outcome==='order'?'selected':'')+' value="order">🛒 طلب / بيع مباشر</option><option '+(x.outcome==='paid'?'selected':'')+' value="paid">💰 تحصيل دين سابق</option><option '+(x.outcome==='both'?'selected':'')+' value="both">🛍️ بيع + تحصيل</option><option '+(x.outcome==='noorder'?'selected':'')+' value="noorder">❌ لم يطلب (المخزون كافٍ)</option><option '+(x.outcome==='closed'?'selected':'')+' value="closed">🔒 المحل مغلق</option><option '+(x.outcome==='followup'?'selected':'')+' value="followup">⏳ طلب متابعة لاحقاً</option></select>'
  +'<input id="ra_'+x.id+'" type="number" placeholder="المبلغ المحصل نقداً (إن وجد)" value="'+(x.paidAmt||'')+'">'
  +'<input id="rc_'+x.id+'" placeholder="حالة السوق / أسعار المنافسين" value="'+esc(x.comp||'')+'">'
@@ -187,31 +187,15 @@ function payC(i){
 function printReceipt(cusName, paidAmt, remDebt){
  var w=S.shop.width,A=w==='A4';
  $('pg').textContent='@page{size:'+(A?'A4':w+'mm auto')+';margin:0}@media print{#receipt{width:'+(A?'auto':w+'mm')+';font-size:12px}}';
- 
- // الأجزاء الثلاثة الاحترافية للطباعة
- var parts = [
-   { title: 'نسخة الزبون (المشتري)', note: 'تسلم للزبون كإثبات سداد' },
-   { title: 'نسخة الموزّع (السيارة)', note: 'تبقى بحوزة السائق للمطابقة' },
-   { title: 'نسخة الإدارة (المحاسبة)', note: 'تسلم للإدارة نهاية الجولة' }
- ];
- 
+ var parts = ['نسخة الزبون (المشتري)', 'نسخة الموزّع (السيارة)', 'نسخة الإدارة (المحاسبة)'];
  var fullHtml = '';
- parts.forEach(function(p){
+ parts.forEach(function(tag){
    fullHtml += '<div class="receipt-part">';
-   fullHtml += '<div class="receipt-tag">--- ' + p.title + ' ---</div>';
-   fullHtml += '<h2>'+esc(S.shop.name)+'</h2>';
-   fullHtml += '<div class="c">سند استلام أموال وتحصيل دين</div>';
-   fullHtml += '<div class="c" style="font-size:11px">'+p.note+'</div>';
-   fullHtml += '<div class="c">'+dt(new Date().toISOString())+'</div><hr>';
-   fullHtml += '<table>';
-   fullHtml += '<tr><td>اسم الزبون:</td><td class="e"><b>'+esc(cusName)+'</b></td></tr>';
-   fullHtml += '<tr><td>المبلغ المسدد:</td><td class="e"><b>'+f(paidAmt)+'</b></td></tr>';
-   fullHtml += '<tr class="b"><td>الدين المتبقي:</td><td class="e">'+f(remDebt)+'</td></tr>';
-   fullHtml += '</table>';
-   fullHtml += '<hr><div class="c" style="font-size:11px">شكراً لتعاملكم مع مؤسسة UNIVER PLAST</div>';
+   fullHtml += '<div class="receipt-tag">--- ' + tag + ' ---</div>';
+   fullHtml += '<h2>'+esc(S.shop.name)+'</h2><div class="c">وصل تسديد واستلام أموال</div><div class="c">'+dt(new Date().toISOString())+'</div><hr>';
+   fullHtml += '<table><tr><td>وصلنا من السيد:</td><td class="e"><b>'+esc(cusName)+'</b></td></tr><tr><td>المبلغ المسدد:</td><td class="e"><b>'+f(paidAmt)+'</b></td></tr><tr class="b"><td>الدين المتبقي:</td><td class="e">'+f(remDebt)+'</td></tr></table><hr><div class="c">شكراً لتعاملكم - UNIVER PLAST</div>';
    fullHtml += '</div>';
  });
-
  $('receipt').innerHTML=fullHtml;
  setTimeout(function(){window.print()},100);
 }
@@ -243,31 +227,19 @@ function checkout(pr){
  var inv={no:S.seq++,d:new Date().toISOString(),c:cu?cu.n:'',items:cart.slice(),t:t,paid:pd};
  S.invoices.unshift(inv);save();cart=[];cid='';render();if(pr)printInv(inv);
 }
-
 function printInv(x){
  var w=S.shop.width,A=w==='A4';
  $('pg').textContent='@page{size:'+(A?'A4':w+'mm auto')+';margin:0}@media print{#receipt{width:'+(A?'auto':w+'mm')+';font-size:12px}}';
- 
- // الأجزاء الثلاثة لفاتورة المبيعات
- var parts = [
-   { title: 'نسخة الزبون (المشتري)', note: 'تسلم للزبون مع البضاعة' },
-   { title: 'نسخة الموزّع (السيارة)', note: 'نسخة السائق والمتابعة' },
-   { title: 'نسخة الإدارة (المحاسبة)', note: 'ترسل للإدارة نهاية الجولة' }
- ];
- 
+ var parts = ['نسخة الزبون (المشتري)', 'نسخة الموزّع (السيارة)', 'نسخة الإدارة (المحاسبة)'];
  var fullHtml = '';
- parts.forEach(function(p){
+ parts.forEach(function(tag){
    fullHtml += '<div class="receipt-part">';
-   fullHtml += '<div class="receipt-tag">--- ' + p.title + ' ---</div>';
-   fullHtml += '<h2>'+esc(S.shop.name)+'</h2>';
-   fullHtml += '<div class="c">وصل بيع وتسليم بضاعة</div>';
-   fullHtml += '<div class="c" style="font-size:11px">'+p.note+'</div>';
-   fullHtml += '<div>وصل رقم: '+x.no+'</div><div>'+dt(x.d)+'</div>'+(x.c?'<div>الزبون: '+esc(x.c)+'</div>':'')+'<hr><table>';
+   fullHtml += '<div class="receipt-tag">--- ' + tag + ' ---</div>';
+   fullHtml += '<h2>'+esc(S.shop.name)+'</h2><div class="c">وصل بيع تسليم بضاعة</div><hr><div>وصل رقم: '+x.no+'</div><div>'+dt(x.d)+'</div>'+(x.c?'<div>الزبون: '+esc(x.c)+'</div>':'')+'<hr><table>';
    x.items.forEach(function(l){fullHtml+='<tr><td>'+esc(l.n)+'<br>'+l.q+' × '+f(l.p)+'</td><td class="e">'+f(l.q*l.p)+'</td></tr>'});
-   fullHtml+='</table><hr><table><tr class="b"><td>الإجمالي</td><td class="e">'+f(x.t)+'</td></tr><tr><td>المدفوع</td><td class="e">'+f(x.paid)+'</td></tr></table><hr><div class="c">شكراً لتعاملكم مع UNIVER PLAST</div>';
+   fullHtml+='</table><hr><table><tr class="b"><td>الإجمالي</td><td class="e">'+f(x.t)+'</td></tr><tr><td>المدفوع</td><td class="e">'+f(x.paid)+'</td></tr></table><hr><div class="c">شكراً لزيارتكم - UNIVER PLAST</div>';
    fullHtml += '</div>';
  });
-
  $('receipt').innerHTML=fullHtml;
  setTimeout(function(){window.print()},100);
 }
@@ -275,7 +247,7 @@ function printInv(x){
 function askF(title,fields,cb){
  var ov=document.createElement('div');ov.className='ov';
  var h='<div class="dg"><h3>'+esc(title)+'</h3>';
- fields.forEach(function(f,i){h+='<label style="display:block;text-align:right;margin:6px 0 2px">'+esc(f[0])+'</label><input id="fld_'+i+'" type="text" value="'+esc(f[1])+'">';});
+ fields.forEach(function(f,i){h+='<label style="display:block;text-align:right;margin:6px 0 2px">'+esc(f[0])+'</label><input id="fld_'+i+'" type="number" value="'+esc(f[1])+'">';});
  h+='<div class="row" style="margin-top:14px"><button class="p" id="okBtn">موافق</button><button id="clBtn">إلغاء</button></div></div>';
  ov.innerHTML=h;document.body.appendChild(ov);
  var inp=$('fld_0');if(inp){inp.focus();inp.select()}
@@ -286,38 +258,10 @@ function askF(title,fields,cb){
  ov.querySelector('#clBtn').onclick=function(){document.body.removeChild(ov)};
 }
 
-function addCusPrompt(){
- askF('إضافة زبون جديد مع عنوان GPS',[['اسم الزبون',''],['الدين الأولي (دج)',0],['إحداثيات GPS (مثال: 36.5,5.4)','']],function(r){
-  var name=r[0].trim(),debt=parseFloat(r[1])||0,gps=r[2].trim();
-  if(!name){toast('يرجى كتابة اسم الزبون');return}
-  S.customers.push({id:uid(),n:name,debt:debt,gps:gps});
-  save();render();toast('تمت إضافة الزبون بنجاح');
- });
-}
-
-function addExpPrompt(){
- askF('تسجيل مصروف ميداني',[['وصف المصروف',''],['المبلغ (دج)',0]],function(r){
-  var desc=r[0].trim(),amt=parseFloat(r[1])||0;
-  if(!amt){toast('يرجى إدخال مبلغ صحيح');return}
-  (S.expenses=S.expenses||[]).unshift({id:uid(),d:new Date().toISOString(),desc:desc||'مصروف عام',a:amt});
-  save();render();toast('تم تسجيل المصروف');
- });
-}
-
 function stkV(){return '<button onclick="go(\'home\')" style="margin-bottom:10px">← الرئيسية</button><div class="card"><b>المخزن والمستودع</b>'+S.products.map(function(p){return '<div class="line"><span class="n">'+esc(p.n)+'<br><span class="mut">المستودع: '+(p.s||0)+' · الشاحنة: '+(p.truck||0)+'</span></span><b>'+f(p.p)+'</b></div>'}).join('')+'</div>'}
-function cusV(){
- return '<button onclick="go(\'home\')" style="margin-bottom:10px">← الرئيسية</button><div class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><b>الزبائن وعناوين GPS والتحصيل</b><button class="p" onclick="addCusPrompt()">➕ زبون جديد</button></div>'+S.customers.map(function(c,i){return '<div class="line"><span class="n"><b>'+esc(c.n)+'</b><br><span class="mut">الدين: <b class="red">'+f(c.debt||0)+'</b></span>'+(c.gps?'<br><a href="https://maps.google.com/?q='+c.gps+'" target="_blank" style="font-size:13px">📍 فتح موقع GPS</a>':'')+'</span>'+(c.debt>0?'<button class="p" onclick="payC('+i+')">تسديد وطباعة وصل</button>':'')+'</div>'}).join('')+'</div>';
-}
-function expV(){
- var list=S.expenses||[],tot=list.reduce(function(a,x){return a+x.a},0);
- return '<button onclick="go(\'home\')" style="margin-bottom:10px">← الرئيسية</button><div class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><b>المصاريف اليومية</b><button class="p" onclick="addExpPrompt()">➕ إضافة مصروف</button></div><div class="st"><span>إجمالي المصاريف</span><b class="red">'+f(tot)+'</b></div></div><div class="card">'+(list.map(function(x){return '<div class="line"><span class="n"><b>'+esc(x.desc)+'</b><br><small class="mut">'+dt(x.d)+'</small></span><b class="red">'+f(x.a)+'</b></div>'}).join('')||'<p class="mut">لا توجد مصاريف مسجلة</p>')+'</div>';
-}
-function statV(){
- var sales=S.invoices.reduce(function(a,x){return a+x.t},0);
- var paid=S.invoices.reduce(function(a,x){return a+(x.paid||0)},0);
- var exp=(S.expenses||[]).reduce(function(a,x){return a+x.a},0);
- return '<button onclick="go(\'home\')" style="margin-bottom:10px">← الرئيسية</button><div class="card"><b>التقارير والإحصائيات الشاملة</b><div class="st"><span>إجمالي المبيعات</span><b>'+f(sales)+'</b></div><div class="st"><span>إجمالي التحصيلات</span><b>'+f(paid)+'</b></div><div class="st"><span>إجمالي المصاريف</span><b class="red">'+f(exp)+'</b></div><div class="st"><span>صافي الصندوق</span><b>'+f(paid-exp)+'</b></div></div>';
-}
+function cusV(){return '<button onclick="go(\'home\')" style="margin-bottom:10px">← الرئيسية</button><div class="card"><b>الزبائن والتحصيل المباشر</b>'+S.customers.map(function(c,i){return '<div class="line"><span class="n"><b>'+esc(c.n)+'</b><br><span class="mut">الدين المتبقي: <b class="red">'+f(c.debt||0)+'</b></span></span>'+(c.debt>0?'<button class="p" onclick="payC('+i+')">تسديد وطباعة وصل</button>':'')+'</div>'}).join('')+'</div>'}
+function expV(){return '<button onclick="go(\'home\')" style="margin-bottom:10px">← الرئيسية</button><div class="card"><b>المصاريف اليومية</b><p class="mut">إدارة المصاريف أثناء الجولة.</p></div>'}
+function statV(){return '<button onclick="go(\'home\')" style="margin-bottom:10px">← الرئيسية</button><div class="card"><b>التقارير والإحصائيات</b><p class="mut">ملخص حركات اليوم والأداء.</p></div>'}
 function histV(){return '<button onclick="go(\'home\')" style="margin-bottom:10px">← الرئيسية</button><div class="card"><b>سجل المبيعات</b>'+S.invoices.map(function(x){return '<div class="line"><span class="n"><b>وصل #'+x.no+'</b><br><small>'+dt(x.d)+' - '+(x.c||'نقدي')+'</small></span><b>'+f(x.t)+'</b></div>'}).join('')+'</div>'}
 
 render();
